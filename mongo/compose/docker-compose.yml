@@ -1,8 +1,8 @@
 version: '2'
 services:
   mongo:
-    container_name: 'keshab-mongo'
-    image: 'keshab-mongo:latest'
+    container_name: 'custom-mongo'
+    image: 'keshabdey/custom-mongo:1.0'
     environment:
       - 'MONGO_INITDB_ROOT_USERNAME=admin'
       - 'MONGO_INITDB_ROOT_PASSWORD=password'
