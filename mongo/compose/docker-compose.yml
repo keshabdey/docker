@@ -1,0 +1,17 @@
+version: '2'
+services:
+  mongo:
+    container_name: 'navya-mongo'
+    image: 'navya-mongo:latest'
+    environment:
+      - 'MONGO_INITDB_ROOT_USERNAME=admin'
+      - 'MONGO_INITDB_ROOT_PASSWORD=password'
+      - 'MONGO_DATABASE_NAME=alpha'
+      - 'MONGO_READ_USER=dbread'
+      - 'MONGO_READ_USER_PASSWORD=password'
+      - 'MONGO_WRITE_USER=dbwrite'
+      - 'MONGO_WRITE_USER_PASSWORD=password'
+    volumes:
+      - '/home/keshab/mapped_drive/mongo_custom:/data/db'
+    ports:
+      - '27017:27017'
