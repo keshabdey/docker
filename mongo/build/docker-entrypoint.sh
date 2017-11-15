@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# Taken from https://github.com/docker-library/mongo/blob/master/3.4/docker-entrypoint.sh
+
 set -Eeuo pipefail
 
 if [ "${1:0:1}" = '-' ]; then
