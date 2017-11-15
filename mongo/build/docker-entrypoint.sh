@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Taken from https://github.com/docker-library/mongo/blob/master/3.4/docker-entrypoint.sh
+# Modified to accept a database name and read and write user credentials
 
 set -Eeuo pipefail
 
@@ -235,6 +236,7 @@ if [ "$originalArgOne" = 'mongod' ]; then
 				DBJS
 				if [ "$MONGO_READ_USER" ] && [ "$MONGO_READ_USER_PASSWORD" ]; then
 					"${mongo[@]}" <<-RUJS
+					    use ${MONGO_DATABASE_NAME};
 						db.createUser({
 							user: '${MONGO_READ_USER}',
 							pwd: '${MONGO_READ_USER_PASSWORD}',
@@ -245,6 +247,7 @@ if [ "$originalArgOne" = 'mongod' ]; then
 				fi
 				if [ "$MONGO_WRITE_USER" ] && [ "$MONGO_WRITE_USER_PASSWORD" ]; then
 					"${mongo[@]}" <<-WUJS
+					    use ${MONGO_DATABASE_NAME};
 						db.createUser({
 							user: '${MONGO_WRITE_USER}',
 							pwd: '${MONGO_WRITE_USER_PASSWORD}',
